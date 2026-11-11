@@ -106,11 +106,28 @@ The `internal` directory was particularly interesting because it contained a fil
 
 I inspected the upload functionality and tested which file extensions the application accepted.
 
-The `.php` extension was rejected. After testing alternative extensions, `.phtml` was accepted.
+The `.php` extension was rejected. After testing alternative extensions, I discovered that `.phtml` was accepted by the upload page.
 
-The accepted extensions recorded during testing are listed in [`notes/php-extensions.txt`](notes/php-extensions.txt).
+The file extensions I tested during the upload investigation are listed in notes/php-extensions.txt. These are the extensions I tried, not necessarily the ones accepted by the application.
 
-For the lab, I prepared a PHP reverse-shell payload using the PentestMonkey PHP reverse-shell template and configured it with the attacker machine's IP address and port. (Reverse Shell Generator)
+#### PHP Reverse Shell Generation
+
+For generating the reverse-shell payload, I used [RevShells.com](https://www.revshells.com/), an online reverse-shell generator.
+
+The following configuration was used:
+
+- **Payload:** PHP PentestMonkey
+- **Attacker Machine:** Kali Linux
+- **Listener Port:** 1234
+- **Accepted Extension:** `.phtml`
+
+I configured the payload with my Kali machine's IP address and port 1234, generated the PHP script, and saved it as `exploit.php`.
+
+Since the target application rejected the `.php` extension, I changed the file extension to `.phtml`, which was accepted.
+
+**Note:** The generated `exploit.phtml` file is intentionally excluded from this repository. Windows Defender repeatedly detected and removed the file when I attempted to transfer it from my Kali attacker machine to my Windows 10 host.
+
+The payload was used exclusively within the authorized TryHackMe Vulnversity lab.
 
 ### 4. Reverse-shell connection
 
