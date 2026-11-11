@@ -108,7 +108,7 @@ I inspected the upload functionality and tested which file extensions the applic
 
 The `.php` extension was rejected. After testing alternative extensions, I discovered that `.phtml` was accepted by the upload page.
 
-The file extensions I tested during the upload investigation are listed in notes/php-extensions.txt. These are the extensions I tried, not necessarily the ones accepted by the application.
+The file extensions I tested during the upload investigation are listed in ['notes/php-extensions.txt'](notes/php-extensions.txt). These are the extensions I tried, not necessarily the ones accepted by the application.
 
 #### PHP Reverse Shell Generation
 
