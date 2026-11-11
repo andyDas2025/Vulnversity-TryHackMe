@@ -1,0 +1,7 @@
+Extensions recorded during testing:
+
+php
+php3
+php4
+php5
+phtml

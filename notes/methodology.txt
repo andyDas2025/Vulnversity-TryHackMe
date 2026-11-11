@@ -1,0 +1,48 @@
+TryHackMe Vulnversity – Methodology Notes
+
+Note: Replace <TARGET_IP> and <ATTACKER_IP> with the addresses assigned in your own active TryHackMe session.
+
+1. Nmap reconnaissance
+   nmap -sV <TARGET_IP> -oN nmap-scan.txt
+
+   Open ports found:
+   21/tcp   FTP          vsftpd 3.0.5
+   22/tcp   SSH          OpenSSH 8.2p1 Ubuntu
+   139/tcp  NetBIOS/SMB   Samba
+   445/tcp  SMB           Samba
+   3128/tcp HTTP proxy    Squid 4.10
+   3333/tcp HTTP          Apache 2.4.41 (Ubuntu)
+
+2. Web inspection
+   http://<TARGET_IP>:3333/
+
+3. Directory enumeration
+   gobuster dir -u http://<TARGET_IP>:3333/ -w /usr/share/wordlists/dirbuster/directory-list-1.0.txt
+
+   Discovered: images, css, js, internal
+   The internal path contained a file-upload page.
+
+4. File-upload testing
+   The .php extension was rejected. The .phtml extension was accepted.
+   A PHP reverse-shell payload was configured for the lab attacker IP and port 1234.
+   The payload itself is intentionally not included in this repository.
+
+5. Reverse shell
+   nc -lvnp 1234
+
+   Uploaded payload URL:
+   http://<TARGET_IP>:3333/internal/uploads/exploit.phtml
+
+   Basic enumeration:
+   hostname
+   whoami
+   pwd
+
+6. Privilege escalation
+   find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
+
+   /bin/systemctl was identified and researched using GTFOBins.
+   A temporary systemd service was used in the lab to read /root/root.txt to /tmp/output.
+   cat /tmp/output
+
+The final privilege-escalation stage was completed with additional guidance from Carpa Security on YouTube.
