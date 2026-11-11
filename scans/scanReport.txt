@@ -1,4 +1,4 @@
-# Nmap 7.99 scan initiated <SCAN_DATE> as: /usr/lib/nmap/nmap --privileged -sV -oN scanreport.txt <TARGET_IP>
+# Nmap 7.99 scan initiated <SCAN_DATE> as: /usr/lib/nmap/nmap --privileged -sV -oN scanReport.txt <TARGET_IP>
 Nmap scan report for <TARGET_IP>
 Host is up (0.073s latency).
 Not shown: 994 closed tcp ports (reset)
