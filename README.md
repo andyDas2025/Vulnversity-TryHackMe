@@ -62,7 +62,7 @@ Vulnversity-TryHackMe/
 First, I scanned the target to identify open ports and running services.
 
 ```bash
-nmap -sV <TARGET_IP> -oN nmap-scan.txt
+nmap -sV <TARGET_IP> -oN scanReport.txt
 ```
 
 The scan identified these six open TCP ports:
@@ -82,7 +82,7 @@ Port **3333** was serving the web application, so I inspected it in a browser:
 http://<TARGET_IP>:3333/
 ```
 
-The saved scan output is available in [`scans/nmap-scan.txt`](scans/nmap-scan.txt).
+The saved scan output is available in [`scans/nmap-scan.txt`](scans/scanReport.txt).
 
 ### 2. Web enumeration with Gobuster
 
